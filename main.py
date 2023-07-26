@@ -7,8 +7,8 @@ from sqlalchemy.orm import sessionmaker
 from datetime import datetime
 from pydantic import BaseModel
 
-# Replace 'sqlite:///event_registration.db' with your preferred database URL
-DATABASE_URL = "sqlite:///event_registration.db"
+
+DATABASE_URL = "sqlite:///events.db"
 engine = create_engine(DATABASE_URL)
 
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
@@ -17,7 +17,7 @@ Base = declarative_base()
 app = FastAPI()
 
 class EventRegistration(Base):
-    __tablename__ = "event_registrations"
+    __tablename__ = "events"
 
     id = Column(Integer, primary_key=True, index=True)
     full_name = Column(String, index=True)
